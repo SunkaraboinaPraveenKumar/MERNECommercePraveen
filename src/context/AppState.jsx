@@ -2,10 +2,12 @@ import React, { useEffect, useState } from 'react';
 import AppContext from './AppContext';
 import axios from 'axios';
 import cors from 'cors';
+import express from 'express'
 import { ToastContainer, toast, Bounce } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const AppState = (props) => {
+  const app=express();
   app.use(cors({
     origin: ['https://merne-commerce-praveen.vercel.app','https://mern-ecommerce-api1.onrender.com/api'],
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
