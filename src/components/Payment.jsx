@@ -6,7 +6,6 @@ import AppContext from '../context/AppContext';
 import OrderConfirmation from './OrderConfirmation';
 import { Link } from 'react-router-dom';
 const Payment = () => {
-  const url="https://mern-ecommerce-api1.onrender.com"
   const {cart,userAddress,user} = useContext(AppContext);
   const [qty, setQty] = useState(0)
   const [price, setPrice] = useState(0)
@@ -131,7 +130,7 @@ const Payment = () => {
                                                     </div>
                                                 </div>
                                                 <div className='px-5 pay'>
-                                                    <Link to={`${url}/orderConfirm`} className='btn btn-success btn-block' onClick={
+                                                    <Link to={`orderConfirm`} className='btn btn-success btn-block' onClick={
                                                         <>
                                                         <OrderConfirmation/>
                                                         </>
@@ -175,7 +174,7 @@ const Payment = () => {
                                                     </div>
                                                 </div>
                                                 <div className='px-5 pay'>
-                                                    <Link to={`${url}/orderConfirm`} className='btn btn-success btn-block' onClick={
+                                                    <Link to={`/orderConfirm`} className='btn btn-success btn-block' onClick={
                                                         <>
                                                         <OrderConfirmation/>
                                                         </>
