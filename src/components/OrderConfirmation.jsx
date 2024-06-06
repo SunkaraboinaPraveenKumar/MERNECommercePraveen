@@ -3,7 +3,8 @@ import AppContext from '../context/AppContext';
 import { Link } from 'react-router-dom';
 import OrderDetailsTable from './OrderDetails';
 const OrderConfirmation = () => {
-  const {cart,userAddress,url,user} = useContext(AppContext);
+  const url="https://mern-ecommerce-api1.onrender.com/api"
+  const {cart,userAddress,user} = useContext(AppContext);
   const handleButtonClick=()=>{
     history.push('/orderDetails',{cart})
   }
@@ -60,7 +61,7 @@ const OrderConfirmation = () => {
           <Link to='/' className='btn btn-warning btn-lg mx-3' style={{fontWeight:'bold'}}>
             Continue Shopping...
           </Link>
-          <Link to={'/orderDetails'}  className='btn btn-info btn-lg' style={{fontWeight:'bold'}}>
+          <Link to={`${url}/orderDetails`}  className='btn btn-info btn-lg' style={{fontWeight:'bold'}}>
              All Orders
           </Link>
       </div>

@@ -6,7 +6,8 @@ import AppContext from '../context/AppContext';
 import OrderConfirmation from './OrderConfirmation';
 import { Link } from 'react-router-dom';
 const Payment = () => {
-  const {cart,userAddress,url,user} = useContext(AppContext);
+  const url="https://mern-ecommerce-api1.onrender.com/api"
+  const {cart,userAddress,user} = useContext(AppContext);
   const [qty, setQty] = useState(0)
   const [price, setPrice] = useState(0)
   const [showCheckoutModal, setShowCheckoutModal] = useState(false); // State to control the checkout modal visibility
@@ -130,7 +131,7 @@ const Payment = () => {
                                                     </div>
                                                 </div>
                                                 <div className='px-5 pay'>
-                                                    <Link to='/orderConfirm' className='btn btn-success btn-block' onClick={
+                                                    <Link to={`${url}/orderConfirm`} className='btn btn-success btn-block' onClick={
                                                         <>
                                                         <OrderConfirmation/>
                                                         </>
@@ -174,7 +175,7 @@ const Payment = () => {
                                                     </div>
                                                 </div>
                                                 <div className='px-5 pay'>
-                                                    <Link to='/orderConfirm' className='btn btn-success btn-block' onClick={
+                                                    <Link to={`${url}/orderConfirm`} className='btn btn-success btn-block' onClick={
                                                         <>
                                                         <OrderConfirmation/>
                                                         </>
