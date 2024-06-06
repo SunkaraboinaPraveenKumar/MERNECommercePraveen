@@ -5,8 +5,7 @@ import RelatedProduct from './RelatedProduct';
 import AppContext from '../../context/AppContext';
 const ProductDetail = () => {
     const {id}=useParams();
-    const {addToCart} =useContext(AppContext)
-    const url="https://mern-ecommerce-api1.onrender.com/api"
+    const {addToCart,url} =useContext(AppContext)
   const [product, setProduct] = useState([])
   useEffect(() => {
     const fetchProduct=async()=>{
