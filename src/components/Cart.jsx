@@ -38,7 +38,7 @@ const Cart = () => {
                   Total QTY :- {qty}
                 </button>
                 <button className="btn btn-warning" style={{ fontWeight: 'bold' }}>
-                  Toatl Price :- {price}
+                  Total Price :- {price}
                 </button>
               </div>
             </>
