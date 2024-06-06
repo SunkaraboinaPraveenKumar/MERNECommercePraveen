@@ -4,9 +4,6 @@ import { Link } from 'react-router-dom';
 import OrderDetailsTable from './OrderDetails';
 const OrderConfirmation = () => {
   const {cart,userAddress,user} = useContext(AppContext);
-  const handleButtonClick=()=>{
-    history.push('/orderDetails',{cart})
-  }
   const [qty, setQty] = useState(0)
   const [price, setPrice] = useState(0)
   useEffect(() => {
@@ -60,7 +57,7 @@ const OrderConfirmation = () => {
           <Link to='/' className='btn btn-warning btn-lg mx-3' style={{fontWeight:'bold'}}>
             Continue Shopping...
           </Link>
-          <Link to={`${url}/orderDetails`}  className='btn btn-info btn-lg' style={{fontWeight:'bold'}}>
+          <Link to={`/orderDetails`}  className='btn btn-info btn-lg' style={{fontWeight:'bold'}}>
              All Orders
           </Link>
       </div>
