@@ -57,7 +57,7 @@ const OrderConfirmation = () => {
           <Link to='/' className='btn btn-warning btn-lg mx-3' style={{fontWeight:'bold'}}>
             Continue Shopping...
           </Link>
-          <Link to={`/orderDetails`}  className='btn btn-info btn-lg' style={{fontWeight:'bold'}}>
+          <Link to='/orderDetails'  className='btn btn-info btn-lg' style={{fontWeight:'bold'}}>
              All Orders
           </Link>
       </div>

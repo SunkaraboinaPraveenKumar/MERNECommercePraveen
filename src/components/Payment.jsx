@@ -3,14 +3,15 @@ import { Modal } from 'react-bootstrap';
 import './model.css'
 import { useLocation, useNavigate } from 'react-router-dom';
 import AppContext from '../context/AppContext';
-import OrderConfirmation from './OrderConfirmation';
-import { Link } from 'react-router-dom';
 const Payment = () => {
   const {cart,userAddress,user} = useContext(AppContext);
   const [qty, setQty] = useState(0)
   const [price, setPrice] = useState(0)
   const [showCheckoutModal, setShowCheckoutModal] = useState(false); // State to control the checkout modal visibility
-
+  const handleOrderNow = () => {
+    setShow(false); // Close modal
+    navigate('/orderConfirm'); // Navigate to order confirmation
+  };
   useEffect(() => {
     let qty = 0;
     let price = 0;
@@ -130,11 +131,9 @@ const Payment = () => {
                                                     </div>
                                                 </div>
                                                 <div className='px-5 pay'>
-                                                    <Link to={`orderConfirm`} className='btn btn-success btn-block' onClick={
-                                                        <>
-                                                        <OrderConfirmation/>
-                                                        </>
-                                                    }>Order Now</Link>
+                                                    <button onClick={handleOrderNow} className='btn btn-success btn-block'>
+                                                        Order Now
+                                                    </button>
                                                 </div>
                                             </div>
                                         </div>
@@ -174,12 +173,9 @@ const Payment = () => {
                                                     </div>
                                                 </div>
                                                 <div className='px-5 pay'>
-                                                    <Link to={`/orderConfirm`} className='btn btn-success btn-block' onClick={
-                                                        <>
-                                                        <OrderConfirmation/>
-                                                        </>
-                                                    }>Add PayPal
-                                                    </Link>
+                                                    <button onClick={handleOrderNow} className='btn btn-success btn-block'
+                                                    >Add PayPal
+                                                    </button>
                                                 </div>
                                             </div>
                                         </div>
