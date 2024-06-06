@@ -82,11 +82,9 @@ const Address = () => {
             <button type="submit" className="btn btn-primary" style={{fontWeight:'bold'}}>Submit</button>
           </div>
         </form>
-        {userAddress&&(
           <div className="d-grid col-6 mx-auto my-3">
           <Link to="/checkout"  className="btn btn-warning" style={{fontWeight:'bold'}}>Use Old Address</Link>
           </div>
-        )}
       </div>
     </>
   )
