@@ -1,20 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import AppContext from './AppContext';
 import axios from 'axios';
-import cors from 'cors';
-import express from 'express'
 import { ToastContainer, toast, Bounce } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const AppState = (props) => {
-  const app=express();
-  app.use(cors({
-    origin: ['https://merne-commerce-praveen.vercel.app','https://mern-ecommerce-api1.onrender.com/api'],
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    allowedHeaders: ['Content-Type', 'Authorization']
-  }));
   // const url = "http://localhost:1000/api";
-  const url='https://mern-ecommerce-api1.onrender.com/api'
+  const url='https://mern-ecommerce-api1.onrender.com'
   const [products, setProducts] = useState([]);
   const [token, setToken] = useState([]);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
