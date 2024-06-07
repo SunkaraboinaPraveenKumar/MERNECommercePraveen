@@ -7,10 +7,10 @@ import ProductsTable from './ProductsTable'
 
 const Checkout = () => {
   const {cart,userAddress,url,user} = useContext(AppContext);
+  // console.log(userAddress)
   const [qty, setQty] = useState(0)
   const [price, setPrice] = useState(0)
   const [showCheckoutModal, setShowCheckoutModal] = useState(false); // State to control the checkout modal visibility
-
   useEffect(() => {
     let qty = 0;
     let price = 0;
@@ -52,6 +52,7 @@ const Checkout = () => {
                   <li>Phone : {userAddress?.phoneNumber}</li>
                   <li>Country : {userAddress?.country}</li>
                   <li>State : {userAddress?.state}</li>
+                  <li>City : {userAddress?.city}</li>
                   <li>Pincode : {userAddress?.pincode}</li>
                   <li>Nearby : {userAddress?.address}</li>
                 </ul>

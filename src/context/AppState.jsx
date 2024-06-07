@@ -30,9 +30,13 @@ const AppState = (props) => {
 
     fetchProduct();
     userCart();
-    getAddress();
   }, [token]);
 
+  useEffect(()=>{
+    if(isAuthenticated){
+      getAddress();
+    }
+  })
   useEffect(() => {
     let lstoken = localStorage.getItem('token');
     if (lstoken) {
@@ -271,7 +275,7 @@ const AppState = (props) => {
       theme: "dark",
       transition: Bounce,
     });
-    return api?.data;
+    return api;
   };
 
   //get user address
@@ -284,7 +288,6 @@ const AppState = (props) => {
       withCredentials: true
     });
     setUserAddress(api?.data?.userAddress);
-    console.log(userAddress)
   };
   
   return (

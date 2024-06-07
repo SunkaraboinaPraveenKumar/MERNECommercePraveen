@@ -45,6 +45,7 @@ const OrderConfirmation = () => {
                   <li>Phone : {userAddress?.phoneNumber}</li>
                   <li>Country : {userAddress?.country}</li>
                   <li>State : {userAddress?.state}</li>
+                  <li>City : {userAddress?.city}</li>
                   <li>Pincode : {userAddress?.pincode}</li>
                   <li>Nearby : {userAddress?.address}</li>
                 </ul>

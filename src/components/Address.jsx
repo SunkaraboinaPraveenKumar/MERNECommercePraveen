@@ -2,92 +2,110 @@ import React, { useContext, useState } from 'react';
 import AppContext from '../context/AppContext';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+
 const Address = () => {
-  const { shippingAddress,userAddress } = useContext(AppContext);
+  const { shippingAddress, userAddress } = useContext(AppContext);
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
-      fullName: "",
-      address: "",
-      city: "",
-      state:"",
-      country:"",
-      pincode:"",
-      phoneNumber:"",
-  })
+    fullName: "",
+    address: "",
+    city: "",
+    state: "",
+    country: "",
+    pincode: "",
+    phoneNumber: "",
+  });
+
   const onChangeHandler = (e) => {
-    const { name, value } = e.target
-    setFormData({ ...formData, [name]: value })
-  }
-  const {fullName,address,city,state,country,pincode,phoneNumber} = formData;
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const { fullName, address, city, state, country, pincode, phoneNumber } = formData;
+
   const submitHandler = async (e) => {
     e.preventDefault();
-    // alert("Your form has been submitted")
-    const result = await shippingAddress(fullName,address,city,state,country,pincode,phoneNumber)
-    console.log(result)
-    if (result.success) {
-      navigate('/checkout')
+
+    // Validation: check if all fields are filled
+    if (!fullName || !address || !city || !state || !country || !pincode || !phoneNumber) {
+      alert("Please fill all the fields.");
+      return;
     }
-    // alert(formData)
-    setFormData({
-      fullName: "",
-      address: "",
-      city: "",
-      state:"",
-      country:"",
-      pincode:"",
-      phoneNumber:"",
-    })
-  }
+
+    try {
+      const result = await shippingAddress(formData);
+      console.log("Backend response:", result.data);
+
+      if (result.data.success) {
+        navigate('/checkout');
+      }
+
+      setFormData({
+        fullName: "",
+        address: "",
+        city: "",
+        state: "",
+        country: "",
+        pincode: "",
+        phoneNumber: "",
+      });
+    } catch (error) {
+      console.error("Error submitting address:", error);
+    }
+  };
+
   return (
     <>
-      <div className="container my-3  p-4" style={{ border: '2px solid yellow', borderRadius: '10px' }}>
+      <div className="container my-3 p-4" style={{ border: '2px solid yellow', borderRadius: '10px' }}>
         <h1 className='text-center'>Shipping Address</h1>
         <form className='my-3' onSubmit={submitHandler}>
           <div className="row">
             <div className="mb-3 col-md-4">
-              <label htmlFor="exampleInputEmail1" className="form-label">Full Name</label>
-              <input name="fullName" value={formData.fullName} onChange={onChangeHandler} type="text" className="form-control bg-dark text-light" id="exampleInputEmail" aria-describedby="emailHelp" />
+              <label htmlFor="fullName" className="form-label">Full Name</label>
+              <input name="fullName" value={formData.fullName} onChange={onChangeHandler} type="text" className="form-control bg-dark text-light" id="fullName" />
             </div>
             <div className="mb-3 col-md-4">
-              <label htmlFor="exampleInputEmail1" className="form-label">Country</label>
-              <input name="country" value={formData.country} onChange={onChangeHandler} type="text" className="form-control bg-dark text-light" id="exampleInputEmail1" aria-describedby="emailHelp" />
+              <label htmlFor="country" className="form-label">Country</label>
+              <input name="country" value={formData.country} onChange={onChangeHandler} type="text" className="form-control bg-dark text-light" id="country" />
             </div>
             <div className="mb-3 col-md-4">
-              <label htmlFor="exampleInputPassword1" className="form-label">State</label>
-              <input name="state" value={formData.state} onChange={onChangeHandler} type="text" className="form-control bg-dark text-light" id="exampleInputPassword1" />
+              <label htmlFor="state" className="form-label">State</label>
+              <input name="state" value={formData.state} onChange={onChangeHandler} type="text" className="form-control bg-dark text-light" id="state" />
             </div>
           </div>
 
           <div className="row">
             <div className="mb-3 col-md-4">
-              <label htmlFor="exampleInputEmail1" className="form-label">City</label>
-              <input name="city" value={formData.city} onChange={onChangeHandler} type="text" className="form-control bg-dark text-light" id="exampleInputEmail" aria-describedby="emailHelp" />
+              <label htmlFor="city" className="form-label">City</label>
+              <input name="city" value={formData.city} onChange={onChangeHandler} type="text" className="form-control bg-dark text-light" id="city" />
             </div>
             <div className="mb-3 col-md-4">
-              <label htmlFor="exampleInputEmail1" className="form-label">Pincode</label>
-              <input name="pincode" value={formData.pincode} onChange={onChangeHandler} type="text" className="form-control bg-dark text-light" id="exampleInputEmail1" aria-describedby="emailHelp" />
+              <label htmlFor="pincode" className="form-label">Pincode</label>
+              <input name="pincode" value={formData.pincode} onChange={onChangeHandler} type="text" className="form-control bg-dark text-light" id="pincode" />
             </div>
             <div className="mb-3 col-md-4">
-              <label htmlFor="exampleInputPassword1" className="form-label">Phone Number</label>
-              <input name="phoneNumber" value={formData.phoneNumber} onChange={onChangeHandler} type="text" className="form-control bg-dark text-light" id="exampleInputPassword1" />
+              <label htmlFor="phoneNumber" className="form-label">Phone Number</label>
+              <input name="phoneNumber" value={formData.phoneNumber} onChange={onChangeHandler} type="text" className="form-control bg-dark text-light" id="phoneNumber" />
             </div>
           </div>
           <div className="row">
             <div className="mb-3">
-              <label htmlFor="exampleFormControlTextarea1" className="form-label">Address/Nearby</label>
-              <textarea name="address" value={formData.address} onChange={onChangeHandler} type="text" className="form-control bg-dark text-light" id="exampleInputPassword1" />
+              <label htmlFor="address" className="form-label">Address/Nearby</label>
+              <textarea name="address" value={formData.address} onChange={onChangeHandler} className="form-control bg-dark text-light" id="address" />
             </div>
           </div>
           <div className='d-grid col-6 mx-auto my-3'>
-            <button type="submit" className="btn btn-primary" style={{fontWeight:'bold'}}>Submit</button>
+            <button type="submit" className="btn btn-primary" style={{ fontWeight: 'bold' }}>Submit</button>
           </div>
         </form>
+        {userAddress && (
           <div className="d-grid col-6 mx-auto my-3">
-          <Link to="/checkout"  className="btn btn-warning" style={{fontWeight:'bold'}}>Use Old Address</Link>
+            <Link to="/checkout" className="btn btn-warning" style={{ fontWeight: 'bold' }}>Use Old Address</Link>
           </div>
+        )}
       </div>
     </>
-  )
+  );
 }
 
-export default Address
+export default Address;
