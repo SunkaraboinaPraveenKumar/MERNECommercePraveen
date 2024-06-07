@@ -25,8 +25,8 @@ const ProductsTable = ({ cart }) => {
                         <th scope="col" className='bg-dark text-white text-center'>Title</th>
                         <th scope="col" className='bg-dark text-white text-center'>Price</th>
                         <th scope="col" className='bg-dark text-white text-center'>Qty</th>
-                        <th scope="col" className='bg-dark text-white text-center'>Qty++</th>
                         <th scope="col" className='bg-dark text-white text-center'>Qty--</th>
+                        <th scope="col" className='bg-dark text-white text-center'>Qty++</th>
                         <th scope="col" className='bg-dark text-white text-center'>Remove</th>
                     </tr>
                 </thead>
