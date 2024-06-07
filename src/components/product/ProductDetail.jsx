@@ -35,8 +35,8 @@ const ProductDetail = () => {
             <p>{product?.description}</p>
             <h1>{product?.price}{" "}₹</h1>
             <div className='my-5'>
-                <button className='btn btn-danger mx-3' style={{fontWeight:'bold'}} onClick={() => addToCart(product?.productId, product?.title, product?.price / product?.qty, 1, product?.imgSrc)}>Buy Now</button>
-                <button className='btn btn-warning' style={{fontWeight:'bold'}} onClick={() => addToCart(product?.productId, product?.title, product?.price / product?.qty, 1, product?.imgSrc)}>Add To Cart</button>
+                <button className='btn btn-danger mx-3' style={{fontWeight:'bold'}} onClick={() => addToCart(product?.productId, product?.title, product?.price, 1, product?.imgSrc)}>Buy Now</button>
+                <button className='btn btn-warning' style={{fontWeight:'bold'}} onClick={() => addToCart(product?.productId, product?.title, product?.price, 1, product?.imgSrc)}>Add To Cart</button>
             </div>
         </div>
     </div>

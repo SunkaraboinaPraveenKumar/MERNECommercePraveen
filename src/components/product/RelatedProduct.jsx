@@ -29,7 +29,7 @@ const RelatedProduct = ({ category }) => {
                                                 <button className='btn btn-primary mx-3'>
                                                     {product.price}{" "}₹
                                                 </button>
-                                                <button className='btn btn-warning' onClick={() => addToCart(product?.productId, product?.title, product?.price / product?.qty, 1, product?.imgSrc)}>
+                                                <button className='btn btn-warning' onClick={() => addToCart(product?.productId, product?.title, product?.price, 1, product?.imgSrc)}>
                                                     Add to Cart
                                                 </button>
                                             </div>
